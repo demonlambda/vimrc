@@ -28,6 +28,7 @@ Plugin 'Yggdroot/indentLine' "垂直对齐显示
 Plugin 'matchit.zip' "
 Plugin 'fatih/vim-go' "golang 语法支持
 Plugin 'brookhong/DBGPavim' "php调试插件
+Plugin 'vim-syntastic/syntastic' "php语法检查插件
 
 call vundle#end()
 "------------------------------end
