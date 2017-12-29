@@ -83,11 +83,13 @@ let b:match_words='\<begin\>:\<end\>'
 "map iabbrev autocmd set
 map <C-N> :NERDTreeToggle<cr>
 map <C-T> :Tlist<cr>
-map <F5> :CtrlP<cr>
+map <F5> :!ctags -R .<cr>
+map <F6> :NERDTreeFind<cr>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader>d dd "delete a line
 nnoremap <leader>c dd0
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
