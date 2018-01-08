@@ -90,8 +90,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <leader>d dd "delete a line
-nnoremap <leader>c dd0
+
+"自定义快捷键
+nnoremap <leader>cw :copen<cr>
+nnoremap <leader>cc :cclose<cr>
+nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
@@ -122,9 +125,12 @@ let statusString=statusHead.statusBody.statusBlank.statusEnd
 set statusline=%!statusString
 
 " php调试
-let g:dbgRavimOnce = 1
-let g:dbgRavimPort = 9009
-let g:dbgPavimBreakAtEntry = 1
+"let g:dbgRavimOnce = 1
+"let g:dbgRavimPort = 9009
+"let g:dbgPavimBreakAtEntry = 1
+
+"文件搜索
+let g:ctrlp_by_filename=1
 
 " php文件类型
 augroup filetype_php
