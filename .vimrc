@@ -130,7 +130,7 @@ set statusline=%!statusString
 "let g:dbgPavimBreakAtEntry = 1
 
 "文件搜索
-let g:ctrlp_by_filename=1
+"let g:ctrlp_by_filename=1
 
 " php文件类型
 augroup filetype_php
