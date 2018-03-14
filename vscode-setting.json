@@ -1,4 +1,11 @@
-{
+{    
+    /**
+    plugin list:
+        php: php debug, php extension pack, php intellisense, php symbols
+        project manager
+        vim 
+        vscode-icons
+    **/
     "git.ignoreLegacyWarning": true,
     "editor.fontSize": 14,
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
