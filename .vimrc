@@ -99,6 +99,8 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>h :call SetFileHeader()<cr>
+nnoremap vd :vert diffsplit<Space>
 inoremap jk <esc>
 nnoremap vg :vimgrep<Space>
 nnoremap d<Space> 4X
@@ -141,3 +143,29 @@ augroup filetype_php
 augroup END
 
 :filetype plugin on
+
+func SetFileHeader()
+
+    if &filetype == "php"
+        call SetPhpFileHeader()
+    endif
+
+endfunc
+
+func SetPhpFileHeader()
+
+    call setline(1, "<?php")
+    call setline(2, "/**")
+    call setline(3, " * Created by vim")
+    call setline(4, " * Author: free")
+    call setline(5, " * Date: ".strftime("%Y-%m-%d"))
+    call setline(6, " * Time: ".strftime("%H:%M"))
+    call setline(7, " */")
+    call setline(8, "")
+    call setline(9, "namespace -")
+    call setline(10, "")
+    call setline(11, "class Example{")
+    call setline(12, "}")
+    call setpos(".", [0, 9, 0])
+
+endfunc
