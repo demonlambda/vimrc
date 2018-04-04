@@ -27,8 +27,9 @@ Plugin 'kien/ctrlp.vim' "文件搜索
 Plugin 'Yggdroot/indentLine' "垂直对齐显示
 Plugin 'matchit.zip' "
 Plugin 'fatih/vim-go' "golang 语法支持
-Plugin 'brookhong/DBGPavim' "php调试插件
+"Plugin 'brookhong/DBGPavim' "php调试插件
 Plugin 'vim-syntastic/syntastic' "php语法检查插件
+Plugin 'alpertuna/vim-header' "文件头注释
 
 call vundle#end()
 "------------------------------end
@@ -80,10 +81,21 @@ let g:indentLine_color_dark = 1 " (default: 2)
 
 let b:match_words='\<begin\>:\<end\>'
 
+"文件注释
+let g:header_auto_add_header = 0
+let g:header_alignment = 0
+let g:header_max_size = 7
+let g:header_field_filename = 0
+let g:header_field_modified_by  = 0
+let g:header_field_modified_timestamp  = 0
+let g:header_field_author = 'free'
+let g:header_field_author_email  = 'free.zhang@xiaoxiongyouxi.com'
+let g:header_field_timestamp_format = '%Y-%m-%d %H:%M'
+
 "map iabbrev autocmd set
 map <C-N> :NERDTreeToggle<cr>
 map <C-T> :Tlist<cr>
-map <F5> :!ctags -R .<cr>
+map <F5> :!ctags --languages=PHP --langmap=PHP:+.php -R .<cr>
 map <F6> :NERDTreeFind<cr>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -99,12 +111,12 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <leader>h :call SetFileHeader()<cr>
 nnoremap vd :vert diffsplit<Space>
 inoremap jk <esc>
 nnoremap vg :vimgrep<Space>
 nnoremap d<Space> 4X
 nnoremap d<S-Left><Space> 4x
+map <leader>h :AddHeader<CR>
 
 set laststatus=2
 " 状态栏各个状态
@@ -143,29 +155,3 @@ augroup filetype_php
 augroup END
 
 :filetype plugin on
-
-func SetFileHeader()
-
-    if &filetype == "php"
-        call SetPhpFileHeader()
-    endif
-
-endfunc
-
-func SetPhpFileHeader()
-
-    call setline(1, "<?php")
-    call setline(2, "/**")
-    call setline(3, " * Created by vim")
-    call setline(4, " * Author: free")
-    call setline(5, " * Date: ".strftime("%Y-%m-%d"))
-    call setline(6, " * Time: ".strftime("%H:%M"))
-    call setline(7, " */")
-    call setline(8, "")
-    call setline(9, "namespace -")
-    call setline(10, "")
-    call setline(11, "class Example{")
-    call setline(12, "}")
-    call setpos(".", [0, 9, 0])
-
-endfunc
