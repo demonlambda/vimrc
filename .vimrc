@@ -57,6 +57,7 @@ set tabstop=4 "一个tab4位
 set expandtab "将tab转换成space
 set guifont=courier_new:h13 "字体
 set fdm=marker "折叠
+set hlsearch "搜索匹配内容高亮
 "---------end
 
 "taglist-----config
