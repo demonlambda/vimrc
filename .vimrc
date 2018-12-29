@@ -13,8 +13,13 @@ set encoding=utf-8
 "提示信息中文
 language messages zh_CN.utf-8
 
+"unix格式换行符, unix(unix换行)：\n, dos(windows换行): \n\r, mac换行: \r
+"只影响使用vim创建的文件
+set ff=unix
+
 "start--------------------------vundle配置
 set nocompatible
+set helplang=cn
 
 "filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -103,6 +108,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-[> :tnext <CR>
 
 "自定义快捷键
 nnoremap <leader>cw :copen<cr>
@@ -146,6 +152,7 @@ set statusline=%!statusString
 
 "文件搜索
 "let g:ctrlp_by_filename=1
+let g:ctrlp_regexp = 1
 
 " php文件类型
 augroup filetype_php
